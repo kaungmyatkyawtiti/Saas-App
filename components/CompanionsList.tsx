@@ -56,7 +56,7 @@ export default function CompanionsList() {
                 {/* Subject */}
                 <td className="py-4">
                   <span
-                    className="inline-flex rounded-full px-3 py-1 bg-[#f4db7f] text-black font-medium"
+                    className="inline-flex rounded-full px-3 py-1 bg-[#f4db7f] text-black font-medium text-sm"
                   >
                     {item.subject}
                   </span>

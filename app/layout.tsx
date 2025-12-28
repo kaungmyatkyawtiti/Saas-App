@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Newsreader } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
 import {
   ClerkProvider,
 } from '@clerk/nextjs'
 
-const newsReader = Newsreader({
+const openSans = Open_Sans({
   weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
   display: 'swap',
@@ -26,7 +26,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <body
-          className={newsReader.className}
+          className={openSans.className}
         >
           <Providers>
             {children}

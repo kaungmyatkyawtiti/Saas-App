@@ -35,160 +35,154 @@ const CompanionForm = () => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto my-10 px-6">
-      <h2 className="text-2xl font-bold tracking-tight mb-6">
-        Companion Builder
-      </h2>
-
-      <form
-        className="space-y-8"
-        onSubmit={handleSubmit(onSubmit)}
+    <form
+      className="space-y-8"
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <FieldBox
+        error={errors.name?.message}
       >
+        <label className="label">
+          <User size={20} /> Companion Name
+        </label>
+        <input
+          {...register("name")}
+          placeholder="Enter the companion name"
+          className={cn(
+            "input",
+            errors.name && "error"
+          )}
+        />
+      </FieldBox>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <FieldBox
-          error={errors.name?.message}
+          error={errors.subject?.message}
         >
           <label className="label">
-            <User size={20} /> Companion Name
+            <BookOpen size={20} /> Subject
+          </label>
+
+          <div className="relative">
+            <select
+              {...register("subject")}
+              className={cn(
+                "select",
+                errors.subject && "error"
+              )}
+            >
+              <option value="">Select Subject</option>
+              {
+                subjects.map((subject) =>
+                  <option key={subject} value={subject}>{subject}</option>
+                )
+              }
+            </select>
+            <ChevronDown
+              size={20}
+              className="chevron-down"
+            />
+          </div>
+        </FieldBox>
+
+        {/* duration field */}
+        <FieldBox
+          error={errors.duration?.message}
+        >
+          <label className="label">
+            <Clock size={20} /> Duration in minutes (min)
           </label>
           <input
-            {...register("name")}
-            placeholder="Enter the companion name"
+            type="number"
+            {...register("duration")}
+            min={1}
+            placeholder="duration"
             className={cn(
               "input",
-              errors.name && "error"
+              errors.duration && "error"
             )}
           />
         </FieldBox>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <FieldBox
-            error={errors.subject?.message}
-          >
-            <label className="label">
-              <BookOpen size={20} /> Subject
-            </label>
+      {/* topic field */}
+      <FieldBox
+        error={errors.topic?.message}
+      >
+        <label className="label">
+          <Sparkles size={20} /> What should the companion help with?
+        </label>
+        <textarea
+          {...register("topic")}
+          placeholder="Ex.Derivates & Integrals"
+          className={cn(
+            "input min-h-25 ",
+            errors.topic && "error"
+          )}
+        />
+      </FieldBox>
 
-            <div className="relative">
-              <select
-                {...register("subject")}
-                className={cn(
-                  "select",
-                  errors.subject && "error"
-                )}
-              >
-                <option value="">Select Subject</option>
-                {
-                  subjects.map((subject) =>
-                    <option key={subject} value={subject}>{subject}</option>
-                  )
-                }
-              </select>
-              <ChevronDown
-                size={20}
-                className="chevron-down"
-              />
-            </div>
-          </FieldBox>
-
-          {/* duration field */}
-          <FieldBox
-            error={errors.duration?.message}
-          >
-            <label className="label">
-              <Clock size={20} /> Duration in minutes (min)
-            </label>
-            <input
-              type="number"
-              {...register("duration")}
-              min={1}
-              placeholder="duration"
-              className={cn(
-                "input",
-                errors.duration && "error"
-              )}
-            />
-          </FieldBox>
-        </div>
-
-        {/* topic field */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* voice select */}
         <FieldBox
-          error={errors.topic?.message}
+          error={errors.voice?.message}
         >
           <label className="label">
-            <Sparkles size={20} /> What should the companion help with?
+            <Mic2 size={20} /> Voice
           </label>
-          <textarea
-            {...register("topic")}
-            placeholder="Ex.Derivates & Integrals"
-            className={cn(
-              "input min-h-25 ",
-              errors.topic && "error"
-            )}
-          />
+          <div className="relative">
+            <select
+              {...register("voice")}
+              className={cn(
+                "select",
+                errors.voice && "error"
+              )}
+            >
+              <option value="">Select Voice</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+            <ChevronDown
+              size={20}
+              className="chevron-down"
+            />
+          </div>
+
         </FieldBox>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* voice select */}
-          <FieldBox
-            error={errors.voice?.message}
-          >
-            <label className="label">
-              <Mic2 size={20} /> Voice
-            </label>
-            <div className="relative">
-              <select
-                {...register("voice")}
-                className={cn(
-                  "select",
-                  errors.voice && "error"
-                )}
-              >
-                <option value="">Select Voice</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
-              <ChevronDown
-                size={20}
-                className="chevron-down"
-              />
-            </div>
-
-          </FieldBox>
-
-          {/* style select */}
-          <FieldBox
-            error={errors.style?.message}
-          >
-            <label className="label">
-              <MessageSquare size={20} /> Teaching Style
-            </label>
-            <div className="relative">
-              <select
-                {...register("style")}
-                className={cn(
-                  "select",
-                  errors.style && "error"
-                )}
-              >
-                <option value="">Select Style</option>
-                <option value="formal">Formal</option>
-                <option value="casual">Casual</option>
-              </select>
-              <ChevronDown
-                size={20}
-                className="chevron-down"
-              />
-            </div>
-          </FieldBox>
-        </div>
-        <button
-          type="submit"
-          className="bg-btn-red text-white px-6 py-3 rounded-xl font-medium"
+        {/* style select */}
+        <FieldBox
+          error={errors.style?.message}
         >
-          Build Your Companion
-        </button>
-      </form >
-    </div >
+          <label className="label">
+            <MessageSquare size={20} /> Teaching Style
+          </label>
+          <div className="relative">
+            <select
+              {...register("style")}
+              className={cn(
+                "select",
+                errors.style && "error"
+              )}
+            >
+              <option value="">Select Style</option>
+              <option value="formal">Formal</option>
+              <option value="casual">Casual</option>
+            </select>
+            <ChevronDown
+              size={20}
+              className="chevron-down"
+            />
+          </div>
+        </FieldBox>
+      </div>
+      <button
+        type="submit"
+        className="bg-btn-red text-white px-6 py-3 rounded-xl font-medium"
+      >
+        Build Your Companion
+      </button>
+    </form >
   );
 };
 

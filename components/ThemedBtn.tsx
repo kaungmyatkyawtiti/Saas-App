@@ -9,13 +9,13 @@ function ThemedBtn() {
     >
       {/* when theme is dark, hide this */}
       <Moon
-        size={24}
+        size={26}
         data-hide-on-theme="dark"
       />
 
       {/* when theme is light, hide this */}
       <Sun
-        size={24}
+        size={26}
         data-hide-on-theme="light"
       />
     </button>

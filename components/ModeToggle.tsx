@@ -29,11 +29,11 @@ const ModeToggle = () => {
       className="navBtn"
     >
       <Moon
-        size={24}
+        size={26}
         className="dark:hidden"
       />
       <Sun
-        size={24}
+        size={26}
         className="hidden dark:block"
       />
     </button>

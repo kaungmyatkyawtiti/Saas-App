@@ -12,14 +12,14 @@ export default function NavItems() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex items-center gap-5">
+    <nav className="flex items-center gap-6">
       {
         navs.map(nav =>
           <Link
             key={nav.href}
             href={nav.href}
             className={cn(
-              pathname === nav.href && "text-red-300"
+              pathname === nav.href && "text-[#e16442]"
             )}
           >
             {nav.label}

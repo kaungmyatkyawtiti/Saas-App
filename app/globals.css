@@ -48,6 +48,13 @@
 }
 
 :root {
+  --clerk-color-background: #cae6fc;
+  --clerk-color-primary: #e16442;
+  --clerk-color-input: #e5e5e5;
+  --clerk-color-ring: #000000;
+  --clerk-border-radius: calc(var(--radius) + 1px);
+  /* --clerk-color-foreground: #ffffff; */
+
   --btn-red: #fe5933;
   --cta: #2c2c2c;
   --cta-gold: #fccc41;
@@ -146,7 +153,7 @@
 
 @layer components {
   .navbar {
-    @apply flex items-center justify-between mx-auto w-full px-4 py-2;
+    @apply flex items-center justify-between p-4 top-0 z-50 sticky backdrop-blur-lg bg-background/80;
   }
 
   .home-section {

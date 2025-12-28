@@ -5,7 +5,9 @@ import Link from "next/link";
 const Cta = () => {
   return (
     <section className="cta-section">
-      <div className="bg-[#ffda6e] text-black rounded-xl px-4 py-1 font-medium mx-auto w-fit">Start learning your way.</div>
+      <div className="bg-[#ffda6e] text-black rounded-xl px-4 py-1 font-medium mx-auto w-fit text-sm">
+        Start learning your way
+      </div>
       <h2 className="text-3xl font-bold">
         Build and Personalize Learning Companion
       </h2>
